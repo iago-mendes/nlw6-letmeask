@@ -66,10 +66,10 @@
 				gap: 8px;
 
 				&.liked {
-					color: var(--background-alt);
+					color: var(--text-link);
 
 					svg path {
-						stroke: var(--background-alt);
+						stroke: var(--text-link);
 					}
 				}
 			}
