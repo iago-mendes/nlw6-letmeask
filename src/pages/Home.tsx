@@ -10,6 +10,7 @@ import {FormEvent, useState} from 'react'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
 import {ThemeSwitch} from '../components/ThemeSwitch'
+import {errorAlert} from '../utils/alerts/error'
 
 export function Home() {
 	const history = useHistory()
@@ -29,9 +30,9 @@ export function Home() {
 
 		const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
-		if (!roomRef.exists()) return alert('Room does not exist!')
+		if (!roomRef.exists()) return errorAlert('Room does not exist!')
 
-		if (roomRef.val().endedAt) return alert('Room already ended!')
+		if (roomRef.val().endedAt) return errorAlert('Room already ended!')
 
 		history.push(`rooms/${roomCode}`)
 	}

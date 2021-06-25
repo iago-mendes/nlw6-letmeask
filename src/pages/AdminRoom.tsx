@@ -12,6 +12,7 @@ import {useRoom} from '../hooks/useRoom'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
 import {ThemeSwitch} from '../components/ThemeSwitch'
+import {confirmAlert} from '../utils/alerts/confirm'
 
 type RoomParams = {
 	id: string
@@ -32,8 +33,11 @@ export function AdminRoom() {
 	}
 
 	async function handleDeleteQuestion(questionId: string) {
-		if (window.confirm('Do you want to remove this question?'))
-			await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+		confirmAlert(
+			'Do you want to remove this question?',
+			'You cannot undo this action.',
+			() => database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+		)
 	}
 
 	async function handleCheckQuestionAsAnswered(questionId: string) {

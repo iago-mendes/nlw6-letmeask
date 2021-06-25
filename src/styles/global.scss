@@ -43,3 +43,12 @@ button,
 textarea {
 	font: 400 16px 'Roboto', sans-serif;
 }
+
+.swal2-popup {
+	background-color: var(--background);
+
+	.swal2-title, .swal2-html-container
+	{
+		color: var(--text);
+	}
+}
