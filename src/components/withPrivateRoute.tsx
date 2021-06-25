@@ -4,6 +4,7 @@ import {useHistory, useParams} from 'react-router-dom'
 
 import {useAuth} from '../hooks/useAuth'
 import {database} from '../services/firebase'
+import {Loading} from './Loading'
 
 type RouteParams = {
 	id: string
@@ -48,7 +49,7 @@ export function withPrivateRoute(Component: React.FC, requiresAdmin = false) {
 		return room.authorId == user?.id
 	}
 
-	if (loading || !isRouteAvailable) return <h1>Loading...</h1>
+	if (loading || !isRouteAvailable) return <Loading />
 
 	return <Component />
 }
