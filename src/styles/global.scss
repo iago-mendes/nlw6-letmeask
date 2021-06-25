@@ -20,17 +20,17 @@ body {
 
 	&.dark {
 		--background: #191622;
-		--text: #E1E1E6;
-		--background-alt: #483C67;
-		--text-alt: #E1E1E6;
+		--text: #e1e1e6;
+		--background-alt: #483c67;
+		--text-alt: #e1e1e6;
 		--detail-1: #fefefe;
 		--detail-2: #f4f0ff;
 		--detail-3: #dbdcdd;
 		--text-link: #e559f9;
-		--button-red: #E96379;
+		--button-red: #e96379;
 		--background-question: #2d2640;
 		--background-highlighted: #3d3267;
-		--background-answered: #41414D;
+		--background-answered: #41414d;
 	}
 
 	background: var(--background);
