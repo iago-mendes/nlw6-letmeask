@@ -8,6 +8,7 @@ import {Button} from '../components/Button'
 import {useAuth} from '../hooks/useAuth'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
+import {ThemeSwitch} from '../components/ThemeSwitch'
 
 export function NewRoom() {
 	const {user} = useAuth()
@@ -31,6 +32,7 @@ export function NewRoom() {
 	return (
 		<div id="page-auth">
 			<aside>
+				<ThemeSwitch />
 				<img
 					src={illustrationImg}
 					alt="Illustration of questions and answers"

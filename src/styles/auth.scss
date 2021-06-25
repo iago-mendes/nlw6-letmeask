@@ -11,9 +11,13 @@
 
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 
-		padding: 128px 80px;
+		padding: 25px;
+
+		.theme-switch {
+			margin-left: auto;
+		}
 
 		img {
 			max-width: 320px;

@@ -11,6 +11,7 @@ import {RoomCode} from '../components/RoomCode'
 import {useRoom} from '../hooks/useRoom'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
+import {ThemeSwitch} from '../components/ThemeSwitch'
 
 type RoomParams = {
 	id: string
@@ -51,7 +52,10 @@ export function AdminRoom() {
 		<div id="page-room">
 			<header>
 				<div className="content">
-					<img src={getLogo()} alt="Letmeask" />
+					<div>
+						<img src={getLogo()} alt="Letmeask" />
+						<ThemeSwitch />
+					</div>
 					<div>
 						<RoomCode code={roomId} />
 						<Button isOutlined onClick={handleEndRoom}>

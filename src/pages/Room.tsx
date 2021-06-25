@@ -10,6 +10,7 @@ import {useAuth} from '../hooks/useAuth'
 import {useRoom} from '../hooks/useRoom'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
+import {ThemeSwitch} from '../components/ThemeSwitch'
 
 type RoomParams = {
 	id: string
@@ -62,7 +63,10 @@ export function Room() {
 		<div id="page-room">
 			<header>
 				<div className="content">
-					<img src={getLogo()} alt="Letmeask" />
+					<div>
+						<img src={getLogo()} alt="Letmeask" />
+						<ThemeSwitch />
+					</div>
 					<RoomCode code={roomId} />
 				</div>
 			</header>

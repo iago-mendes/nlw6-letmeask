@@ -14,7 +14,7 @@ export const ThemeProvider: React.FC = ({children}) => {
 
 	useEffect(() => {
 		document.body.className = theme
-	}, [])
+	}, [theme])
 
 	function getSavedTheme() {
 		const savedTheme = localStorage.getItem('theme')

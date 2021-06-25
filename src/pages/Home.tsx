@@ -9,6 +9,7 @@ import {useAuth} from '../hooks/useAuth'
 import {FormEvent, useState} from 'react'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
+import {ThemeSwitch} from '../components/ThemeSwitch'
 
 export function Home() {
 	const history = useHistory()
@@ -38,6 +39,7 @@ export function Home() {
 	return (
 		<div id="page-auth">
 			<aside>
+				<ThemeSwitch />
 				<img
 					src={illustrationImg}
 					alt="Illustration of questions and answers"
