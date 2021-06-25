@@ -1,5 +1,5 @@
-import {FormEvent, useState} from 'react'
-import {useParams} from 'react-router-dom'
+import {FormEvent, useEffect, useState} from 'react'
+import {useHistory, useParams} from 'react-router-dom'
 
 import '../styles/room.scss'
 
@@ -18,10 +18,15 @@ type RoomParams = {
 
 export function Room() {
 	const {user} = useAuth()
+	const {push} = useHistory()
 	const {id: roomId} = useParams<RoomParams>()
 	const [newQuestion, setNewQuestion] = useState('')
 
-	const {questions, title} = useRoom(roomId)
+	const {questions, title, hasEnded} = useRoom(roomId)
+
+	useEffect(() => {
+		if (hasEnded) push('/')
+	}, [hasEnded])
 
 	async function handleSendQuestion(e: FormEvent) {
 		e.preventDefault()
