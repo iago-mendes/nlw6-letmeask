@@ -17,7 +17,7 @@ type RoomParams = {
 }
 
 export function Room() {
-	const {user} = useAuth()
+	const {user, signInWithGoogle} = useAuth()
 	const {push} = useHistory()
 	const {id: roomId} = useParams<RoomParams>()
 	const [newQuestion, setNewQuestion] = useState('')
@@ -96,7 +96,11 @@ export function Room() {
 							</div>
 						) : (
 							<span>
-								To send a question, <button>log into your account</button>.
+								To send a question,{' '}
+								<button onClick={signInWithGoogle}>
+									log into your account
+								</button>
+								.
 							</span>
 						)}
 						<Button type="submit" disabled={!user}>
