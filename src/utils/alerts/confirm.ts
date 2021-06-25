@@ -9,9 +9,7 @@ export function confirmAlert(
 		icon: 'question',
 		title: title,
 		text: text,
-		showCancelButton: true,
-		confirmButtonText: 'Continuar',
-		cancelButtonText: 'Cancelar'
+		showCancelButton: true
 	}).then(res => {
 		if (res.isConfirmed) callback()
 	})
