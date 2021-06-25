@@ -74,7 +74,8 @@
 				margin-top: 16px;
 			}
 
-			button, input {
+			button,
+			input {
 				width: 100%;
 			}
 		}
@@ -112,7 +113,7 @@
 		}
 
 		&:hover {
-			filter: brightness(0.9)
+			filter: brightness(0.9);
 		}
 	}
 

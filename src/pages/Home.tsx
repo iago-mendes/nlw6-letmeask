@@ -1,14 +1,14 @@
-import { useHistory } from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 import illustrationImg from '../assets/images/illustration.svg'
 import logoImg from '../assets/images/logo.svg'
 import googleIconImg from '../assets/images/google-icon.svg'
-import { Button } from '../components/Button'
+import {Button} from '../components/Button'
 
 import '../styles/auth.scss'
-import { useAuth } from '../hooks/useAuth'
-import { FormEvent, useState } from 'react'
-import { database } from '../services/firebase'
+import {useAuth} from '../hooks/useAuth'
+import {FormEvent, useState} from 'react'
+import {database} from '../services/firebase'
 
 export function Home() {
 	const history = useHistory()
@@ -16,57 +16,51 @@ export function Home() {
 	const [roomCode, setRoomCode] = useState('')
 
 	async function handleCreateRoom() {
-		if (!user)
-			await signInWithGoogle()
-		
+		if (!user) await signInWithGoogle()
+
 		history.push('/rooms/new')
 	}
 
-	async function handleJoinRoom(e: FormEvent)
-	{
+	async function handleJoinRoom(e: FormEvent) {
 		e.preventDefault()
 
-		if (roomCode.trim() === '')
-			return
-		
+		if (roomCode.trim() === '') return
+
 		const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
-		if (!roomRef.exists())
-			return alert('Room does not exist!')
-		
-		if (roomRef.val().endedAt)
-			return alert('Room already ended!')
-		
+		if (!roomRef.exists()) return alert('Room does not exist!')
+
+		if (roomRef.val().endedAt) return alert('Room already ended!')
+
 		history.push(`rooms/${roomCode}`)
 	}
 
 	return (
-		<div id='page-auth' >
+		<div id="page-auth">
 			<aside>
-				<img src={illustrationImg} alt='Illustration of questions and answers' />
+				<img
+					src={illustrationImg}
+					alt="Illustration of questions and answers"
+				/>
 				<strong>Create live Q&amp;A rooms</strong>
 				<p>Solve your audience questions in real time</p>
 			</aside>
 			<main>
-				<div className='main-content' >
-					<img src={logoImg} alt='Letmeask' />
-					<button onClick={handleCreateRoom} className='create-room' >
-						<img src={googleIconImg} alt='Google icon' />
+				<div className="main-content">
+					<img src={logoImg} alt="Letmeask" />
+					<button onClick={handleCreateRoom} className="create-room">
+						<img src={googleIconImg} alt="Google icon" />
 						Create your room with Google
 					</button>
-					<div className='separator' >
-						or join a room
-					</div>
-					<form onSubmit={handleJoinRoom} >
+					<div className="separator">or join a room</div>
+					<form onSubmit={handleJoinRoom}>
 						<input
-							type='text'
+							type="text"
 							placeholder="Type the room's code"
 							value={roomCode}
 							onChange={e => setRoomCode(e.target.value)}
 						/>
-						<Button type='submit'>
-							Join room
-						</Button>
+						<Button type="submit">Join room</Button>
 					</form>
 				</div>
 			</main>
