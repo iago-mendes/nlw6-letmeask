@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@lingui/react": "^3.10.2",
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.1.0",
 		"@testing-library/user-event": "^12.1.10",
@@ -27,7 +28,9 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"lint": "prettier --write . && eslint --fix ."
+		"lint": "prettier --write . && eslint --fix .",
+		"i18n:extract": "lingui extract",
+		"i18n:compile": "lingui compile"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -48,6 +51,8 @@
 		]
 	},
 	"devDependencies": {
+		"@lingui/cli": "^3.10.2",
+		"@lingui/macro": "^3.10.2",
 		"@types/react-router-dom": "^5.1.7",
 		"@typescript-eslint/eslint-plugin": "^4.28.0",
 		"@typescript-eslint/parser": "^4.28.0",
