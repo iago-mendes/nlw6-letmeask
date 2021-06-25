@@ -1,13 +1,13 @@
 import {FormEvent, useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 
+import '../styles/auth.scss'
 import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
+
 import {Button} from '../components/Button'
 import {useAuth} from '../hooks/useAuth'
 import {database} from '../services/firebase'
-
-import '../styles/auth.scss'
+import {getLogo} from '../utils/getLogo'
 
 export function NewRoom() {
 	const {user} = useAuth()
@@ -40,7 +40,7 @@ export function NewRoom() {
 			</aside>
 			<main>
 				<div className="main-content">
-					<img src={logoImg} alt="Letmeask" />
+					<img src={getLogo()} alt="Letmeask" />
 					<h2>Create a room</h2>
 					<form onSubmit={handleCreateRoom}>
 						<input

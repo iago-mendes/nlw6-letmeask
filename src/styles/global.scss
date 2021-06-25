@@ -5,8 +5,36 @@
 }
 
 body {
-	background: #f8f8f8;
-	color: #29292e;
+	--background: #f8f8f8;
+	--text: #29292e;
+	--background-alt: #835afd;
+	--text-alt: #fff;
+	--detail-1: #a8a8b3;
+	--detail-2: #737380;
+	--detail-3: #e2e2e2;
+	--text-link: #e559f9;
+	--button-red: #ea4335;
+	--background-question: #fefefe;
+	--background-highlighted: #f4f0ff;
+	--background-answered: #dbdcdd;
+
+	&.dark {
+		--background: #191622;
+		--text: #E1E1E6;
+		--background-alt: #483C67;
+		--text-alt: #E1E1E6;
+		--detail-1: #a8a8b3;
+		--detail-2: #737380;
+		--detail-3: #e2e2e2;
+		--text-link: #e559f9;
+		--button-red: #E96379;
+		--background-question: #fefefe;
+		--background-highlighted: #f4f0ff;
+		--background-answered: #dbdcdd;
+	}
+
+	background: var(--background);
+	color: var(--text);
 }
 
 body,

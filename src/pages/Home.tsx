@@ -1,14 +1,14 @@
 import {useHistory} from 'react-router-dom'
 
-import illustrationImg from '../assets/images/illustration.svg'
-import logoImg from '../assets/images/logo.svg'
-import googleIconImg from '../assets/images/google-icon.svg'
-import {Button} from '../components/Button'
-
 import '../styles/auth.scss'
+import illustrationImg from '../assets/images/illustration.svg'
+import googleIconImg from '../assets/images/google-icon.svg'
+
+import {Button} from '../components/Button'
 import {useAuth} from '../hooks/useAuth'
 import {FormEvent, useState} from 'react'
 import {database} from '../services/firebase'
+import {getLogo} from '../utils/getLogo'
 
 export function Home() {
 	const history = useHistory()
@@ -47,7 +47,7 @@ export function Home() {
 			</aside>
 			<main>
 				<div className="main-content">
-					<img src={logoImg} alt="Letmeask" />
+					<img src={getLogo()} alt="Letmeask" />
 					<button onClick={handleCreateRoom} className="create-room">
 						<img src={googleIconImg} alt="Google icon" />
 						Create your room with Google
