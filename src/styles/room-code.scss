@@ -31,3 +31,17 @@
 		white-space: nowrap;
 	}
 }
+
+@media (max-width: 800px) {
+	.room-code {
+		width: 150px;
+
+		span {
+			overflow: hidden;
+			padding: 0;
+			margin-left: 5px;
+			text-overflow: ellipsis;
+			font-size: 10px;
+		}
+	}
+}

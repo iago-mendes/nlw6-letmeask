@@ -80,3 +80,18 @@
 		}
 	}
 }
+
+@media (max-width: 800px) {
+	footer {
+		flex-direction: column;
+		gap: 5px;
+		
+		.user-info {
+			margin-right: auto;
+		}
+
+		> div:not(.user-info) {
+			margin-left: auto;
+		}
+	}
+}
