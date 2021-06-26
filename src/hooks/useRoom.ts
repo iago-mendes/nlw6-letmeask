@@ -41,6 +41,13 @@ export function useRoom(roomId: string) {
 	const [hasEnded, setHasEnded] = useState(false)
 	const [youtubeEmbedId, setYoutubeEmbedId] = useState('')
 
+	const sortedQuestions = [...questions].sort((a, b) => {
+		if (a.isAnswered && !b.isAnswered) return 1
+		if (a.isHighlighted && !b.isHighlighted) return -1
+		if (a.likeCount > b.likeCount) return -1
+		else return 1
+	})
+
 	useEffect(() => {
 		const roomRef = database.ref(`rooms/${roomId}`)
 
@@ -74,5 +81,5 @@ export function useRoom(roomId: string) {
 		}
 	}, [roomId, user?.id])
 
-	return {questions, title, hasEnded, youtubeEmbedId}
+	return {questions: sortedQuestions, title, hasEnded, youtubeEmbedId}
 }

@@ -48,9 +48,9 @@ export function AdminRoom() {
 		})
 	}
 
-	async function handleHighlightQuestion(questionId: string) {
+	async function handleHighlightQuestion(questionId: string, value?: boolean) {
 		await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
-			isHighlighted: true
+			isHighlighted: value ?? true
 		})
 	}
 
@@ -134,7 +134,12 @@ export function AdminRoom() {
 									</button>
 									<button
 										type="button"
-										onClick={() => handleHighlightQuestion(question.id)}
+										onClick={() =>
+											handleHighlightQuestion(
+												question.id,
+												!question.isHighlighted
+											)
+										}
 									>
 										<img src={answerImg} alt="Highlight question" />
 									</button>
