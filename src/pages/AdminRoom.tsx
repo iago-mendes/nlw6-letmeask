@@ -13,6 +13,7 @@ import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
 import {ThemeSwitch} from '../components/ThemeSwitch'
 import {confirmAlert} from '../utils/alerts/confirm'
+import {MySwal} from '../utils/alerts'
 
 type RoomParams = {
 	id: string
@@ -22,7 +23,7 @@ export function AdminRoom() {
 	const history = useHistory()
 	const {id: roomId} = useParams<RoomParams>()
 
-	const {questions, title} = useRoom(roomId)
+	const {questions, title, youtubeEmbedId} = useRoom(roomId)
 
 	async function handleEndRoom() {
 		await database.ref(`rooms/${roomId}`).update({
@@ -36,7 +37,8 @@ export function AdminRoom() {
 		confirmAlert(
 			'Do you want to remove this question?',
 			'You cannot undo this action.',
-			() => database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
+			async () =>
+				await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
 		)
 	}
 
@@ -50,6 +52,31 @@ export function AdminRoom() {
 		await database.ref(`rooms/${roomId}/questions/${questionId}`).update({
 			isHighlighted: true
 		})
+	}
+
+	function handleStreamYoutubeLiveStream() {
+		MySwal.fire({
+			title: 'What is the embed ID?',
+			text: 'The embed ID is informed in the URL after "/embed/".',
+			input: 'text',
+			showCancelButton: true
+		}).then(async res => {
+			if (res.isConfirmed && res.value && res.value !== '')
+				await database.ref(`rooms/${roomId}`).update({
+					youtubeEmbedId: res.value
+				})
+		})
+	}
+
+	function handleStopYoutubeLiveStream() {
+		confirmAlert(
+			'Do you want to stop?',
+			'If you continue, your YouTube live will stop streamming.',
+			async () =>
+				await database.ref(`rooms/${roomId}`).update({
+					youtubeEmbedId: ''
+				})
+		)
 	}
 
 	return (
@@ -73,6 +100,19 @@ export function AdminRoom() {
 				<div className="room-title">
 					<h1>Room {title}</h1>
 					{questions.length > 0 && <span>{questions.length} question(s)</span>}
+				</div>
+
+				<div className="youtube-controller">
+					{youtubeEmbedId === '' ? (
+						<button onClick={handleStreamYoutubeLiveStream}>
+							Stream YouTube live
+						</button>
+					) : (
+						<>
+							<span>You are streamming a YouTube live</span>
+							<button onClick={handleStopYoutubeLiveStream}>Stop live</button>
+						</>
+					)}
 				</div>
 
 				<div className="question-list">

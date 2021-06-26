@@ -39,6 +39,7 @@ export function useRoom(roomId: string) {
 	const [questions, setQuestions] = useState<QuestionType[]>([])
 	const [title, setTitle] = useState('')
 	const [hasEnded, setHasEnded] = useState(false)
+	const [youtubeEmbedId, setYoutubeEmbedId] = useState('')
 
 	useEffect(() => {
 		const roomRef = database.ref(`rooms/${roomId}`)
@@ -63,6 +64,9 @@ export function useRoom(roomId: string) {
 			setTitle(databaseRoom.title)
 			setQuestions(parsedQuestions)
 			setHasEnded(databaseRoom.endedAt != undefined)
+
+			if (databaseRoom.youtubeEmbedId != undefined)
+				setYoutubeEmbedId(databaseRoom.youtubeEmbedId)
 		})
 
 		return () => {
@@ -70,5 +74,5 @@ export function useRoom(roomId: string) {
 		}
 	}, [roomId, user?.id])
 
-	return {questions, title, hasEnded}
+	return {questions, title, hasEnded, youtubeEmbedId}
 }
