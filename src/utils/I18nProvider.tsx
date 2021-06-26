@@ -8,8 +8,8 @@ import {
 	fromNavigator
 } from '@lingui/detect-locale'
 
-import enMessages from '../locales/en/messages.json'
-import ptMessages from '../locales/pt/messages.json'
+import {messages as enMessages} from '../locales/en/messages'
+import {messages as ptMessages} from '../locales/pt/messages'
 
 i18n.load('en', enMessages)
 i18n.load('pt', ptMessages)
