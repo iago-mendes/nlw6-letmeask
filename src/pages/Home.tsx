@@ -31,9 +31,9 @@ export function Home() {
 
 		const roomRef = await database.ref(`rooms/${roomCode}`).get()
 
-		if (!roomRef.exists()) return errorAlert('Room does not exist!')
+		if (!roomRef.exists()) return errorAlert(t`Room does not exist!`)
 
-		if (roomRef.val().endedAt) return errorAlert('Room already ended!')
+		if (roomRef.val().endedAt) return errorAlert(t`Room already ended!`)
 
 		history.push(`rooms/${roomCode}`)
 	}

@@ -1,5 +1,5 @@
 import {useHistory, useParams} from 'react-router-dom'
-import {Trans, t, Plural} from '@lingui/macro'
+import {Trans, t} from '@lingui/macro'
 
 import '../styles/room.scss'
 import deleteImg from '../assets/images/delete.svg'
@@ -91,7 +91,7 @@ export function AdminRoom() {
 					<div>
 						<RoomCode code={roomId} />
 						<Button isOutlined onClick={handleEndRoom}>
-							End room
+							<Trans>End room</Trans>
 						</Button>
 					</div>
 				</div>
@@ -104,11 +104,7 @@ export function AdminRoom() {
 					</h1>
 					{questions.length > 0 && (
 						<span>
-							<Plural
-								value={questions.length}
-								one="# question"
-								other="# questions"
-							/>
+							<Trans>{questions.length} question(s)</Trans>
 						</span>
 					)}
 				</div>
