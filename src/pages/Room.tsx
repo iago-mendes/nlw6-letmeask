@@ -1,5 +1,6 @@
 import {FormEvent, useEffect, useState} from 'react'
 import {useHistory, useParams} from 'react-router-dom'
+import {Trans, t, Plural} from '@lingui/macro'
 
 import '../styles/room.scss'
 
@@ -79,15 +80,25 @@ export function Room() {
 
 			<main>
 				<div className="room-title">
-					<h1>Room {title}</h1>
-					{questions.length > 0 && <span>{questions.length} question(s)</span>}
+					<h1>
+						<Trans>Room {title}</Trans>
+					</h1>
+					{questions.length > 0 && (
+						<span>
+							<Plural
+								value={questions.length}
+								one="# question"
+								other="# questions"
+							/>
+						</span>
+					)}
 				</div>
 
 				{youtubeEmbedId !== '' && <YoutubeEmbed embedId={youtubeEmbedId} />}
 
 				<form onSubmit={handleSendQuestion}>
 					<textarea
-						placeholder="What do you want to ask?"
+						placeholder={t`What do you want to ask?`}
 						value={newQuestion}
 						onChange={e => setNewQuestion(e.target.value)}
 					/>
@@ -99,15 +110,17 @@ export function Room() {
 							</div>
 						) : (
 							<span>
-								To send a question,{' '}
-								<button onClick={signInWithGoogle}>
-									log into your account
-								</button>
-								.
+								<Trans>
+									To send a question,{' '}
+									<button onClick={signInWithGoogle}>
+										log into your account
+									</button>
+									.
+								</Trans>
 							</span>
 						)}
 						<Button type="submit" disabled={!user}>
-							Send question
+							<Trans>Send question</Trans>
 						</Button>
 					</div>
 				</form>
@@ -125,7 +138,7 @@ export function Room() {
 								<button
 									className={`like-button ${question.likeId ? 'liked' : ''}`}
 									type="button"
-									aria-label="Mark as liked"
+									aria-label={t`Mark as liked`}
 									onClick={() =>
 										handleLikeQuestion(question.id, question.likeId)
 									}

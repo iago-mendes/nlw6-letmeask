@@ -1,3 +1,5 @@
+import {Trans, t} from '@lingui/macro'
+
 import '../styles/room-code.scss'
 import copyImg from '../assets/images/copy.svg'
 
@@ -10,15 +12,17 @@ type RoomCodeProps = {
 export function RoomCode({code}: RoomCodeProps) {
 	function copyRoomCodeToClipboard() {
 		navigator.clipboard.writeText(code)
-		successAlert('Copied!')
+		successAlert(t`Copied!`)
 	}
 
 	return (
 		<button className="room-code" onClick={copyRoomCodeToClipboard}>
 			<div>
-				<img src={copyImg} alt="Copy room code" />
+				<img src={copyImg} alt={t`Copy room code`} />
 			</div>
-			<span>Room #{code}</span>
+			<span>
+				<Trans>Room #{code}</Trans>
+			</span>
 		</button>
 	)
 }

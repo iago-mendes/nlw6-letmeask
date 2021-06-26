@@ -1,4 +1,5 @@
 import {useHistory, useParams} from 'react-router-dom'
+import {Trans, t, Plural} from '@lingui/macro'
 
 import '../styles/room.scss'
 import deleteImg from '../assets/images/delete.svg'
@@ -35,8 +36,8 @@ export function AdminRoom() {
 
 	async function handleDeleteQuestion(questionId: string) {
 		confirmAlert(
-			'Do you want to remove this question?',
-			'You cannot undo this action.',
+			t`Do you want to remove this question?`,
+			t`You cannot undo this action.`,
 			async () =>
 				await database.ref(`rooms/${roomId}/questions/${questionId}`).remove()
 		)
@@ -56,8 +57,8 @@ export function AdminRoom() {
 
 	function handleStreamYoutubeLiveStream() {
 		MySwal.fire({
-			title: 'What is the embed ID?',
-			text: 'The embed ID is informed in the URL after "/embed/".',
+			title: t`What is the embed ID?`,
+			text: t`The embed ID is informed in the URL after "/embed/".`,
 			input: 'text',
 			showCancelButton: true
 		}).then(async res => {
@@ -70,8 +71,8 @@ export function AdminRoom() {
 
 	function handleStopYoutubeLiveStream() {
 		confirmAlert(
-			'Do you want to stop?',
-			'If you continue, your YouTube live will stop streamming.',
+			t`Do you want to stop?`,
+			t`If you continue, your YouTube live will stop streamming.`,
 			async () =>
 				await database.ref(`rooms/${roomId}`).update({
 					youtubeEmbedId: ''
@@ -98,19 +99,33 @@ export function AdminRoom() {
 
 			<main>
 				<div className="room-title">
-					<h1>Room {title}</h1>
-					{questions.length > 0 && <span>{questions.length} question(s)</span>}
+					<h1>
+						<Trans>Room {title}</Trans>
+					</h1>
+					{questions.length > 0 && (
+						<span>
+							<Plural
+								value={questions.length}
+								one="# question"
+								other="# questions"
+							/>
+						</span>
+					)}
 				</div>
 
 				<div className="youtube-controller">
 					{youtubeEmbedId === '' ? (
 						<button onClick={handleStreamYoutubeLiveStream}>
-							Stream YouTube live
+							<Trans>Stream YouTube live</Trans>
 						</button>
 					) : (
 						<>
-							<span>You are streamming a YouTube live</span>
-							<button onClick={handleStopYoutubeLiveStream}>Stop live</button>
+							<span>
+								<Trans>You are streamming a YouTube live</Trans>
+							</span>
+							<button onClick={handleStopYoutubeLiveStream}>
+								<Trans>Stop live</Trans>
+							</button>
 						</>
 					)}
 				</div>
@@ -130,7 +145,7 @@ export function AdminRoom() {
 										type="button"
 										onClick={() => handleCheckQuestionAsAnswered(question.id)}
 									>
-										<img src={checkImg} alt="Mark question as answered" />
+										<img src={checkImg} alt={t`Mark question as answered`} />
 									</button>
 									<button
 										type="button"
@@ -141,7 +156,7 @@ export function AdminRoom() {
 											)
 										}
 									>
-										<img src={answerImg} alt="Highlight question" />
+										<img src={answerImg} alt={t`Highlight question`} />
 									</button>
 								</>
 							)}
@@ -149,7 +164,7 @@ export function AdminRoom() {
 								type="button"
 								onClick={() => handleDeleteQuestion(question.id)}
 							>
-								<img src={deleteImg} alt="Remove question" />
+								<img src={deleteImg} alt={t`Remove question`} />
 							</button>
 						</Question>
 					))}

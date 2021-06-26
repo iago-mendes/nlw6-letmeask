@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react'
+import {ReactNode} from 'react'
 import {i18n} from '@lingui/core'
 import {I18nProvider as LinguiProvider} from '@lingui/react'
 import {

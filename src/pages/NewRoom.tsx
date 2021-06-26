@@ -1,5 +1,6 @@
 import {FormEvent, useState} from 'react'
 import {Link, useHistory} from 'react-router-dom'
+import {Trans, t} from '@lingui/macro'
 
 import '../styles/auth.scss'
 import illustrationImg from '../assets/images/illustration.svg'
@@ -35,26 +36,36 @@ export function NewRoom() {
 				<ThemeSwitch />
 				<img
 					src={illustrationImg}
-					alt="Illustration of questions and answers"
+					alt={t`Illustration of questions and answers`}
 				/>
-				<strong>Create live Q&amp;A rooms</strong>
-				<p>Solve your audience questions in real time</p>
+				<strong>
+					<Trans>Create live Q&amp;A rooms</Trans>
+				</strong>
+				<p>
+					<Trans>Solve your audience questions in real time</Trans>
+				</p>
 			</aside>
 			<main>
 				<div className="main-content">
 					<img src={getLogo()} alt="Letmeask" />
-					<h2>Create a room</h2>
+					<h2>
+						<Trans>Create a room</Trans>
+					</h2>
 					<form onSubmit={handleCreateRoom}>
 						<input
 							type="text"
-							placeholder="Room's name"
+							placeholder={t`Room's name`}
 							value={newRoom}
 							onChange={e => setNewRoom(e.target.value)}
 						/>
-						<Button type="submit">Create room</Button>
+						<Button type="submit">
+							<Trans>Create room</Trans>
+						</Button>
 					</form>
 					<p>
-						Want to join an existing room? <Link to="/">click here</Link>
+						<Trans>
+							Want to join an existing room? <Link to="/">click here</Link>
+						</Trans>
 					</p>
 				</div>
 			</main>
