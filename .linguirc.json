@@ -7,5 +7,6 @@
 			"include": ["src"]
 		}
 	],
-	"format": "minimal"
+	"format": "minimal",
+	"compileNamespace": "ts"
 }
