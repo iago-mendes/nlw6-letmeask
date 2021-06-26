@@ -45,10 +45,10 @@ textarea {
 }
 
 .swal2-popup {
-	background-color: var(--background);
+	background-color: var(--background) !important;
 
 	.swal2-title, .swal2-html-container
 	{
-		color: var(--text);
+		color: var(--text) !important;
 	}
 }
