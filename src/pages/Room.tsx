@@ -1,5 +1,5 @@
 import {FormEvent, useEffect, useState} from 'react'
-import {useHistory, useParams} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import {Trans, t, Plural} from '@lingui/macro'
 
 import '../styles/room.scss'
@@ -71,7 +71,9 @@ export function Room() {
 			<header>
 				<div className="content">
 					<div>
-						<img src={getLogo()} alt="Letmeask" />
+						<Link to="/">
+							<img src={getLogo()} alt="Letmeask" />
+						</Link>
 						<ThemeSwitch />
 					</div>
 					<RoomCode code={roomId} />

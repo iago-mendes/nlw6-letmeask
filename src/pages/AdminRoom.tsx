@@ -1,4 +1,4 @@
-import {useHistory, useParams} from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import {Trans, t} from '@lingui/macro'
 
 import '../styles/room.scss'
@@ -85,7 +85,9 @@ export function AdminRoom() {
 			<header>
 				<div className="content">
 					<div>
-						<img src={getLogo()} alt="Letmeask" />
+						<Link to="/">
+							<img src={getLogo()} alt="Letmeask" />
+						</Link>
 						<ThemeSwitch />
 					</div>
 					<div>
