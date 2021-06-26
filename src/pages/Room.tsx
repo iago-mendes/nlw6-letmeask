@@ -83,7 +83,7 @@ export function Room() {
 			<main>
 				<div className="room-title">
 					<h1>
-						<Trans>Room {title}</Trans>
+						<Trans>Room</Trans> {title}
 					</h1>
 					{questions.length > 0 && (
 						<span>

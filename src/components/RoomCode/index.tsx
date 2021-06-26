@@ -21,7 +21,7 @@ export function RoomCode({code}: RoomCodeProps) {
 				<img src={copyImg} alt={t`Copy room code`} />
 			</div>
 			<span>
-				<Trans>Room #{code}</Trans>
+				<Trans>Room</Trans> #{code}
 			</span>
 		</button>
 	)
