@@ -1,6 +1,6 @@
 import {Trans, t} from '@lingui/macro'
 
-import '../styles/room-code.scss'
+import './styles.scss'
 import copyImg from '../assets/images/copy.svg'
 
 import {successAlert} from '../utils/alerts/success'
