@@ -11,6 +11,7 @@ import {useRoom} from '../hooks/useRoom'
 import {database} from '../services/firebase'
 import {getLogo} from '../utils/getLogo'
 import {ThemeSwitch} from '../components/ThemeSwitch'
+import {YoutubeEmbed} from '../components/YoutubeEmbed'
 
 type RoomParams = {
 	id: string
@@ -22,7 +23,7 @@ export function Room() {
 	const {id: roomId} = useParams<RoomParams>()
 	const [newQuestion, setNewQuestion] = useState('')
 
-	const {questions, title, hasEnded} = useRoom(roomId)
+	const {questions, title, hasEnded, youtubeEmbedId} = useRoom(roomId)
 
 	useEffect(() => {
 		if (hasEnded) push('/')
@@ -81,6 +82,8 @@ export function Room() {
 					<h1>Room {title}</h1>
 					{questions.length > 0 && <span>{questions.length} question(s)</span>}
 				</div>
+
+				{youtubeEmbedId !== '' && <YoutubeEmbed embedId={youtubeEmbedId} />}
 
 				<form onSubmit={handleSendQuestion}>
 					<textarea

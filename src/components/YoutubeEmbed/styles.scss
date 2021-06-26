@@ -1,14 +1,14 @@
-.video-responsive {
+.youtube-video {
+	border-radius: 8px;
   overflow: hidden;
-  padding-bottom: 56.25%;
-  position: relative;
-  height: 0;
-	
+
+	margin-bottom: 20px;
+
 	iframe {
-		left: 0;
-		top: 0;
-		height: 100%;
-		width: 100%;
-		position: absolute;
+		width: calc(100vw - 20px);
+		height: calc((100vw - 20px) * 720 / 1280);
+
+		max-width: 800px;
+		max-height: calc(800px * 720 / 1280);
 	}
 }
