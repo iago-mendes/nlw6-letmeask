@@ -5,32 +5,32 @@
 }
 
 body {
-	--background: #f8f8f8;
-	--text: #29292e;
-	--background-alt: #835afd;
-	--text-alt: #fff;
-	--detail-1: #a8a8b3;
-	--detail-2: #737380;
-	--detail-3: #e2e2e2;
+	--background: #191622;
+	--text: #e1e1e6;
+	--background-alt: #483c67;
+	--text-alt: #e1e1e6;
+	--detail-1: #fefefe;
+	--detail-2: #f4f0ff;
+	--detail-3: #dbdcdd;
 	--text-link: #e559f9;
-	--button-red: #ea4335;
-	--background-question: #fefefe;
-	--background-highlighted: #f4f0ff;
-	--background-answered: #dbdcdd;
+	--button-red: #e96379;
+	--background-question: #2d2640;
+	--background-highlighted: #3d3267;
+	--background-answered: #41414d;	
 
-	&.dark {
-		--background: #191622;
-		--text: #e1e1e6;
-		--background-alt: #483c67;
-		--text-alt: #e1e1e6;
-		--detail-1: #fefefe;
-		--detail-2: #f4f0ff;
-		--detail-3: #dbdcdd;
+	&.light {
+		--background: #f8f8f8;
+		--text: #29292e;
+		--background-alt: #835afd;
+		--text-alt: #fff;
+		--detail-1: #a8a8b3;
+		--detail-2: #737380;
+		--detail-3: #e2e2e2;
 		--text-link: #e559f9;
-		--button-red: #e96379;
-		--background-question: #2d2640;
-		--background-highlighted: #3d3267;
-		--background-answered: #41414d;
+		--button-red: #ea4335;
+		--background-question: #fefefe;
+		--background-highlighted: #f4f0ff;
+		--background-answered: #dbdcdd;
 	}
 
 	background: var(--background);
