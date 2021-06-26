@@ -16,7 +16,7 @@ body {
 	--button-red: #e96379;
 	--background-question: #2d2640;
 	--background-highlighted: #3d3267;
-	--background-answered: #41414d;	
+	--background-answered: #41414d;
 
 	&.light {
 		--background: #f8f8f8;
@@ -47,8 +47,8 @@ textarea {
 .swal2-popup {
 	background-color: var(--background) !important;
 
-	.swal2-title, .swal2-html-container
-	{
+	.swal2-title,
+	.swal2-html-container {
 		color: var(--text) !important;
 	}
 }
