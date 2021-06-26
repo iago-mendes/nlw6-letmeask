@@ -1,9 +1,9 @@
 import {Trans, t} from '@lingui/macro'
 
 import './styles.scss'
-import copyImg from '../assets/images/copy.svg'
+import copyImg from '../../assets/images/copy.svg'
 
-import {successAlert} from '../utils/alerts/success'
+import {successAlert} from '../../utils/alerts/success'
 
 type RoomCodeProps = {
 	code: string
