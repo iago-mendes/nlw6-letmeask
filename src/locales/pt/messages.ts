@@ -43,6 +43,7 @@
 		'Você está transmitindo uma live do YouTube',
 	'You cannot undo this action.': 'Você não pode desfazer essa ação.',
 	'or join a room': 'ou entre em uma sala',
+	'question(s)': 'pergunta(s)',
 	'{0, plural, one {# question} other {# questions}}': [
 		['0', 'plural', {one: ['#', ' pergunta'], other: ['#', ' perguntas']}]
 	],

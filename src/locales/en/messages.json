@@ -36,6 +36,7 @@
 	"You are streamming a YouTube live": "You are streamming a YouTube live",
 	"You cannot undo this action.": "You cannot undo this action.",
 	"or join a room": "or join a room",
+	"question(s)": "question(s)",
 	"{0, plural, one {# question} other {# questions}}": "{0, plural, one {# question} other {# questions}}",
 	"{0} question(s)": "{0} question(s)"
 }

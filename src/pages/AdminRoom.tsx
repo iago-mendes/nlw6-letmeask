@@ -106,7 +106,7 @@ export function AdminRoom() {
 					</h1>
 					{questions.length > 0 && (
 						<span>
-							<Trans>{questions.length} question(s)</Trans>
+							{questions.length} <Trans>question(s)</Trans>
 						</span>
 					)}
 				</div>
